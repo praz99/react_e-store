@@ -25,11 +25,9 @@ const App = () => {
     fetchCart();
   }, []);
 
-  console.log('cart', cart);
-
   return (
     <div>
-      <Navbar />
+      <Navbar totalItems={cart.total_items} />
       <Products products={products} onAddToCart={handleAddToCart} />
     </div>
   );

@@ -1,17 +1,25 @@
-/* eslint-disable import/extensions */
-import React from 'react';
-// import Products from './components/Products/Products';
-// import Navbar from './components/Navbar/Navbar';
-
+import React, { useEffect, useState } from 'react';
+import { commerce } from './lib/commerce';
 import { Navbar, Products } from './components';
 
-function App() {
+const App = () => {
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    const { data } = await commerce.products.list();
+    setProducts(data);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <div>
       <Navbar />
-      <Products />
+      <Products products={products} />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import Product from './Product/Product';
 import useStyles from './styles';
@@ -21,3 +21,8 @@ function Products({ products, onAddToCart }) {
 }
 
 export default Products;
+
+Products.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onAddToCart: PropTypes.func.isRequired,
+};

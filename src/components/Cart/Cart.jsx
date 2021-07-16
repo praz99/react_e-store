@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   Button, Container, Grid, Typography,
 } from '@material-ui/core';
@@ -58,3 +58,13 @@ const Cart = ({
 };
 
 export default Cart;
+
+Cart.propTypes = {
+  cart: PropTypes.shape({
+    line_items: PropTypes.number.isRequired,
+    subtotal: PropTypes.number.isRequired,
+  }).isRequired,
+  handleUpdateCartQuantity: PropTypes.func.isRequired,
+  handleRemoveFromCart: PropTypes.func.isRequired,
+  handleEmptyCart: PropTypes.func.isRequired,
+};

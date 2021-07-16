@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button, Container, Grid, Typography,
 } from '@material-ui/core';
@@ -10,7 +11,10 @@ const Cart = ({ cart }) => {
   const classes = useStyles();
 
   const EmptyCart = () => (
-    <Typography variant="subtitle1">Tou have no items in your shopping cart, start adding some!</Typography>
+    <Typography variant="subtitle1">
+      You have no items in your shopping cart,
+      <Link to="/" className={classes.link}>start adding some!</Link>
+    </Typography>
   );
 
   const FilledCart = () => (

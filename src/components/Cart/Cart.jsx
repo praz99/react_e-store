@@ -61,8 +61,10 @@ export default Cart;
 
 Cart.propTypes = {
   cart: PropTypes.shape({
-    line_items: PropTypes.number.isRequired,
-    subtotal: PropTypes.number.isRequired,
+    line_items: PropTypes.arrayOf(PropTypes.object),
+    subtotal: PropTypes.shape({
+      formatted_with_symbol: PropTypes.string,
+    }),
   }).isRequired,
   handleUpdateCartQuantity: PropTypes.func.isRequired,
   handleRemoveFromCart: PropTypes.func.isRequired,

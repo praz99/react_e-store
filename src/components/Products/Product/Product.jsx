@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Card, CardMedia, CardContent, CardActions, Typography, IconButton,
 } from '@material-ui/core';
@@ -34,3 +34,18 @@ function Product({ product, onAddToCart }) {
 }
 
 export default Product;
+
+Product.propTypes = {
+  product: PropTypes.shape({
+    media: PropTypes.shape({
+      source: PropTypes.string.isRequired,
+    }).isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+      formatted_with_symbol: PropTypes.string.isRequired,
+    }).isRequired,
+    description: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  onAddToCart: PropTypes.func.isRequired,
+};

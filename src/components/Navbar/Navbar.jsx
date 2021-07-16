@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography,
 } from '@material-ui/core';
@@ -38,3 +38,11 @@ const Navbar = ({ totalItems }) => {
 };
 
 export default Navbar;
+
+Navbar.propTypes = {
+  totalItems: PropTypes.number,
+};
+
+Navbar.defaultProps = {
+  totalItems: null,
+};

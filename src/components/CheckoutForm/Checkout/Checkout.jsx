@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import {
   Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button,

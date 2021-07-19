@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { TextField, Grid } from '@material-ui/core';
 import { useFormContext, Controller } from 'react-hook-form';
+import PropTypes from 'prop-types';
 
 const FormInput = ({ name, label, required }) => {
   const { control } = useFormContext();
@@ -26,3 +26,9 @@ const FormInput = ({ name, label, required }) => {
 };
 
 export default FormInput;
+
+FormInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  required: PropTypes.bool.isRequired,
+};

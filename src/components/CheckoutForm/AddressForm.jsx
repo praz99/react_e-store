@@ -17,7 +17,7 @@ const AddressForm = ({ checkoutToken }) => {
   const [shippingOption, setShippingOption] = useState('');
   const methods = useForm();
 
-  const countries = Object.entries(setShippingCountries).map(([code, name]) => (
+  const countries = Object.entries(shippingCountries).map(([code, name]) => (
     {
       id: code,
       label: name,

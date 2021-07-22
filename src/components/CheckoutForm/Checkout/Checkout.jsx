@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import {
   Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button,
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
 import { commerce } from '../../../lib/commerce';
@@ -68,3 +68,9 @@ const Checkout = ({ cart }) => {
 };
 
 export default Checkout;
+
+Checkout.propTypes = {
+  cart: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+};

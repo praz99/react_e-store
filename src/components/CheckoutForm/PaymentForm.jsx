@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Typography, Button, Divider } from '@material-ui/core';
 import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { PropTypes } from 'prop-types';
 import Review from './Review';
 
 const stripePromise = loadStripe('...');
@@ -41,3 +41,15 @@ const PaymentForm = ({ checkoutToken, backStep }) => (
 );
 
 export default PaymentForm;
+
+PaymentForm.propTypes = {
+  checkoutToken: PropTypes.shape({
+    live: PropTypes.shape({
+      line_items: PropTypes.arrayOf(PropTypes.object),
+      subtotal: PropTypes.shape({
+        formatted_with_symbol: PropTypes.string.isRequired,
+      }),
+    }).isRequired,
+  }).isRequired,
+  backStep: PropTypes.func.isRequired,
+};

@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import {
   Typography, List, ListItem, ListItemText,
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
 
 const Review = ({ checkoutToken }) => (
   <>
@@ -11,18 +10,29 @@ const Review = ({ checkoutToken }) => (
     <List disablePadding>
       {checkoutToken.live.line_items.map((product) => (
         <ListItem style={{ padding: '10px 0' }} key={product.name}>
-          <ListItemText primary={product.name} secondary={`Quatity: ${product.quantity}`} />
+          <ListItemText primary={product.name} secondary={`Quantity: ${product.quantity}`} />
           <Typography variant="body2">{product.line_total.formatted_with_symbol}</Typography>
         </ListItem>
       ))}
       <ListItem style={{ padding: '10px 0' }}>
         <ListItemText primary="Total" />
-        <Typograhy variant="subtitle1" style={{ fontWeight: 700 }}>
-
-        </Typograhy>
+        <Typography variant="subtitle1" style={{ fontWeight: 700 }}>
+          {checkoutToken.live.subtotal.formatted_with_symbol}
+        </Typography>
       </ListItem>
     </List>
   </>
 );
 
 export default Review;
+
+Review.propTypes = {
+  checkoutToken: PropTypes.shape({
+    live: PropTypes.shape({
+      line_items: PropTypes.arrayOf(PropTypes.object),
+      subtotal: PropTypes.shape({
+        formatted_with_symbol: PropTypes.string.isRequired,
+      }),
+    }).isRequired,
+  }).isRequired,
+};

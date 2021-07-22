@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   InputLabel, Select, MenuItem, Button, Grid, Typography,
 } from '@material-ui/core';
 import { useForm, FormProvider } from 'react-hook-form';
+import PropTypes from 'prop-types';
 import { commerce } from '../../lib/commerce';
 import FormInput from './FormInput';
 
@@ -141,3 +140,10 @@ const AddressForm = ({ checkoutToken, next }) => {
 };
 
 export default AddressForm;
+
+AddressForm.propTypes = {
+  checkoutToken: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+  next: PropTypes.func.isRequired,
+};

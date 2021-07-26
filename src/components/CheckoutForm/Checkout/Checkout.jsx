@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
-  Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button,
+  Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, CssBaseline,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import AddressForm from '../AddressForm';
@@ -19,6 +19,7 @@ const Checkout = ({
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [shippingData, setShippingData] = useState({});
   const classes = useStyles();
+  const history = useHistory();
 
   useEffect(() => {
     const generateToken = async () => {
@@ -26,7 +27,7 @@ const Checkout = ({
         const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
         setCheckoutToken(token);
       } catch (error) {
-        console.log('error');
+        history.push('/');
       }
     };
     generateToken();
@@ -91,6 +92,7 @@ const Checkout = ({
 
   return (
     <>
+      <CssBaseline />
       <div className={classes.toolbar} />
       <main className={classes.layout}>
         <Paper className={classes.paper}>

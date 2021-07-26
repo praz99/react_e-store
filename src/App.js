@@ -39,11 +39,19 @@ const App = () => {
     setCart(cart);
   };
 
+  const refreshCart = async () => {
+    const newCart = await commerce.cart.refresh();
+    setCart(newCart);
+  };
+
   const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
     try {
       const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
       setOrder(incomingOrder);
-    } catch (error) { }
+      refreshCart();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

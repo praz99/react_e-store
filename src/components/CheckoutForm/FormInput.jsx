@@ -20,6 +20,7 @@ const FormInput = ({ name, label }) => {
             required
           />
         )}
+        defaultValue=""
       />
     </Grid>
   );

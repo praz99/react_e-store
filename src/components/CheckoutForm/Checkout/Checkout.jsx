@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button,
 } from '@material-ui/core';
@@ -40,11 +41,21 @@ const Checkout = ({
     nextStep();
   };
 
-  const Confirmation = () => (
-    <div>
-      Confirmation
+  const Confirmation = () => (order.customer ? (
+    <>
+      <div>
+        <Typography variant="h5">Thank you for your purchase</Typography>
+        <Divider className={classes.divider} />
+        <Typography variant="subtitle">Order ref: </Typography>
+      </div>
+      <br />
+      <Button component={Link} to="/" variant="outlined" type="button">Back to Home</Button>
+    </>
+  ) : (
+    <div className={classes.spinner}>
+      <CircularProgress />
     </div>
-  );
+  ));
 
   const Form = () => (activeStep === 0
     ? <AddressForm checkoutToken={checkoutToken} next={next} />

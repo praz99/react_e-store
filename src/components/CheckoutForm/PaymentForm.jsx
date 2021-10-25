@@ -21,6 +21,7 @@ const PaymentForm = ({
     const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
 
     if (error) {
+      // eslint-disable-next-line no-console
       console.log(error);
     } else {
       const orderData = {
